@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #f9f9f9, #e0e0e0);
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.editor-container, .preview {
+  width: 45%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.editor {
+  width: 80%;
+  height: 80vh;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.editor:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 12px rgba(0, 170, 255, 0.4);
+  animation: pulse 1s infinite;
+}
+
+.preview {
+  width: 100%;
+  height: 80vh;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.8;
+  transition: background-color 0.3s ease;
+}
+
+.preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.preview img:hover {
+  transform: scale(1.05);
+}
+
+.preview blockquote {
+  border-left: 6px solid #00aaff;
+  padding-left: 15px;
+  margin: 20px 0;
+  font-style: italic;
+  background-color: #f0faff;
+  border-radius: 8px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.preview blockquote::before {
+  content: '“';
+  font-size: 2.5rem;
+  color: #00aaff;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.preview h1, .preview h2 {
+  color: #333;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1.015);
+    opacity: 0.9;
   }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.editor:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 12px rgba(0, 170, 255, 0.4);
+  animation: pulse 2s ease-in-out infinite;
 }
